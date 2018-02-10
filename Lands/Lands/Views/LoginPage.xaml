@@ -3,9 +3,13 @@
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     x:Class="Lands.Views.LoginPage"
+    
     Title="First Page">
     <ContentPage.Content>
-        <StackLayout
+
+        <ScrollView>            
+        
+            <StackLayout
             
             Padding="10,20,10,5">
             <Label
@@ -18,7 +22,7 @@
 
             <Image
                 Source="onu"
-                WidthRequest="100">
+                WidthRequest="200">
             </Image>
 
             <Grid
@@ -114,5 +118,7 @@
             </StackLayout>
             
         </StackLayout>
+
+        </ScrollView>
     </ContentPage.Content>
 </ContentPage>

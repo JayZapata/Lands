@@ -18,7 +18,7 @@
 
             <Image
                 Source="onu"
-                WidthRequest="200">
+                WidthRequest="100">
             </Image>
 
             <Grid
@@ -70,14 +70,49 @@
             <ActivityIndicator>
                 
             </ActivityIndicator>
+            
+            <StackLayout
+                Margin="40,0">
+                
+                <Button
+                    BackgroundColor="Navy"
+                    BorderRadius="23"  
+                    HeightRequest="46"
+                    Text="Login"
+                    TextColor="White">                
+                </Button>
+            
+                <Button
+                    BackgroundColor="Purple"
+                    BorderRadius="23" 
+                    HeightRequest="46"
+                    Text="Register"
+                    TextColor="White">
+                </Button> 
+                
+            </StackLayout>
 
-            <Button
-                BackgroundColor="Navy"
-                BorderRadius="23"                
-                Text="Login"
-                TextColor="White">                
-            </Button>
+            <StackLayout
+                HorizontalOptions="Center"
+                Orientation="Horizontal">
 
+                <Image
+                       Source="facebook_logo"
+                       WidthRequest="70">
+                </Image>
+                
+                <Image
+                       Source="twitter_logo"
+                       WidthRequest="75">
+                </Image>
+
+                <Image
+                       Source="instagram_logo"
+                       WidthRequest="65">
+                </Image>
+
+            </StackLayout>
+            
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

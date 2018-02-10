@@ -5,7 +5,7 @@
     <Platform Condition=" '$(Platform)' == '' ">iPhoneSimulator</Platform>
     <ProductVersion>8.0.30703</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{1F2BFAB5-150F-4D44-9EC6-C407BC51D5DB}</ProjectGuid>
+    <ProjectGuid>{BBFE704F-C62E-4951-9F0B-5265BDF16FD8}</ProjectGuid>
     <ProjectTypeGuids>{FEACFBD2-3405-455C-9665-78FE426C6842};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <OutputType>Exe</OutputType>
     <RootNamespace>Lands.iOS</RootNamespace>
@@ -124,8 +124,11 @@
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
   <ItemGroup>
     <ProjectReference Include="..\Lands\Lands.csproj">
-      <Project>{140B73A7-597E-4FF4-962E-3E39BC1E1B04}</Project>
+      <Project>{FFFEA981-7883-42F1-99D0-1A2655B17DAF}</Project>
       <Name>Lands</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\onu.png" />
   </ItemGroup>
 </Project>

@@ -3,20 +3,27 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-using Xamarin.Forms;
+
 
 namespace Lands
 {
-	public partial class App : Application
+    using Views;
+    using Xamarin.Forms;
+
+    #region Constructors
+    public partial class App : Application
 	{
 		public App ()
 		{
 			InitializeComponent();
+            
 
-			MainPage = new Lands.MainPage();
+			this.MainPage = new NavigationPage (new LoginPage());
 		}
+        #endregion
 
-		protected override void OnStart ()
+        #region Metods
+        protected override void OnStart ()
 		{
 			// Handle when your app starts
 		}
@@ -30,5 +37,7 @@ namespace Lands
 		{
 			// Handle when your app resumes
 		}
-	}
+        #endregion
+
+    }
 }

@@ -2,12 +2,82 @@
 <ContentPage 
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    x:Class="Lands.View.LoginPage">
+    x:Class="Lands.Views.LoginPage"
+    Title="First Page">
     <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
+        <StackLayout
+            
+            Padding="10,20,10,5">
+            <Label
+                FontAttributes="Bold"     
+                FontSize="Large"
+                HorizontalOptions="CenterAndExpand"
+                
+                Text="Lands">                
+            </Label>
+
+            <Image
+                Source="onu"
+                WidthRequest="200">
+            </Image>
+
+            <Grid
+                Margin="0,20">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="2*"/>
+                </Grid.ColumnDefinitions>
+                <Label  
+                    Grid.Row="0"
+                    Grid.Column="0"    
+                    Text="E-Mail"
+                    VerticalOptions="Center">
+                </Label>
+                <Entry 
+                    Grid.Row="0"
+                    Grid.Column="1"
+                    Keyboard="Email"
+                    Placeholder="Enter your e-mail.....">
+                </Entry>
+
+                <Label  
+                    Grid.Row="1"
+                    Grid.Column="0"
+                    Text="Password"
+                    VerticalOptions="Center">
+                </Label>
+
+                <Entry 
+                    Grid.Row="1"
+                    Grid.Column="1"
+                    IsPassword="True"
+                    Placeholder="Enter your password.....">
+                </Entry>
+            </Grid>            
+            
+            <StackLayout 
+                Orientation="Horizontal">
+                <Label
+                    HorizontalOptions="StartAndExpand"
+                    Text="Rememberme in this divice"
+                    VerticalOptions="Center">
+                </Label>
+                <Switch
+                    HorizontalOptions="End">
+                </Switch>
+            </StackLayout>
+            
+            <ActivityIndicator>
+                
+            </ActivityIndicator>
+
+            <Button
+                BackgroundColor="Navy"
+                BorderRadius="23"                
+                Text="Login"
+                TextColor="White">                
+            </Button>
+
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

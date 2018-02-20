@@ -19,7 +19,6 @@
 
         #endregion
 
-
         #region Properties
 
         public ObservableCollection<Land> Lands
@@ -44,6 +43,26 @@
 
         private async void LoadLands()
         {
+            var connection = await this.apiServices.CheckConnection();
+
+            if (!connection.IsSuccess)
+
+            {
+
+                //this.IsRefreshing = false;
+
+                await Application.Current.MainPage.DisplayAlert(
+
+                    "Error",
+                    connection.Message,
+                    "Accept");
+
+                await Application.Current.MainPage.Navigation.PopToRootAsync();
+
+                return;
+
+            }
+
             var response=await this.apiServices.GetList<Land>(
                 "http://restcountries.eu/rest/v2/all",
                 "/rest",
@@ -56,6 +75,7 @@
                     "Error",
                     response.Message,
                     "Accept");
+                await Application.Current.MainPage.Navigation.PopToRootAsync();
                 return;
                }
             var list = (List<Land>)response.Result;

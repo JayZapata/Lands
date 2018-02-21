@@ -126,7 +126,7 @@ namespace Lands.ViewModels
             await Application.Current.MainPage.Navigation.PushAsync(new LandsPage());
         }
 
-        #endregion
+        #endregion      
 
     }
 }

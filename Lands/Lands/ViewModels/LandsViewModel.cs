@@ -28,7 +28,10 @@
         public string Filter
         {
             get { return this.filter; }
-            set { this.SetValue(ref this.filter, value); }
+            set {
+                this.SetValue(ref this.filter, value);
+                this.Search();
+                }
         }
 
         public ObservableCollection<Land> Lands
@@ -130,7 +133,8 @@
             else
             {
                 this.Lands = new ObservableCollection<Land>(
-                    this.LandsList.Where(l => l.Name.ToLower().Contains(this.Filter.ToLower())));
+                    this.LandsList.Where(l => l.Name.ToLower().Contains(this.Filter.ToLower()) ||
+                    l.Capital.ToLower().Contains(this.Filter.ToLower())));
 
             }
             IsRefreshing = false;

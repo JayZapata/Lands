@@ -19,6 +19,12 @@ namespace Lands.ViewModels
             set;
         }
 
+        public LandViewModel Land
+        {
+            get;
+            set;
+        }
+
         #endregion
 
         #region Constructors

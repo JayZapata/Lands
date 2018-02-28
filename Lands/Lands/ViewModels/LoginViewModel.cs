@@ -20,7 +20,6 @@ namespace Lands.ViewModels
 
         #endregion
 
-
         #region Attributes
 
         private string email;
@@ -71,7 +70,10 @@ namespace Lands.ViewModels
         {
             this.apiService = new ApiService();
             this.IsRemembered = true;
-            this.IsEnabled = true;           
+            this.IsEnabled = true;
+
+            this.Email = "jayzapata@gmail.com";
+            this.Password = "123456";
         }
         #endregion
 

@@ -6,7 +6,11 @@ using System.Threading.Tasks;
 
 namespace Lands.Domain
 {
-    public class Class1
+    using System.Data.Entity;
+    public class DataContext : DbContext
     {
+        public DataContext() : base("DefaultConnection")
+        {
+        }
     }
 }

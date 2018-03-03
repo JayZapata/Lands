@@ -49,7 +49,7 @@ namespace Lands.Domain
                 }
                 
                 return string.Format(
-                    "http://landsapi1.azurewebsites.net/{0}",
+                    "http://landsapi4.azurewebsites.net/{0}",
                     ImagePath.Substring(1));
             }
         }

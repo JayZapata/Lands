@@ -95,14 +95,5 @@ namespace Lands.Resourses {
                 return ResourceManager.GetString("Error", resourceCulture);
             }
         }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Rememberme on this divice.
-        /// </summary>
-        public static string Rememberme {
-            get {
-                return ResourceManager.GetString("Rememberme", resourceCulture);
-            }
-        }
     }
 }

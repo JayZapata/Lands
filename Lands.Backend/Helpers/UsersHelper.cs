@@ -6,7 +6,7 @@
     using System;
     using System.Threading.Tasks;
     using System.Web.Configuration;
-    
+
     public class UsersHelper : IDisposable
     {
         private static ApplicationDbContext userContext = new ApplicationDbContext();
@@ -29,44 +29,27 @@
         {
             var userManager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(userContext));
             var userASP = userManager.FindByEmail(currentUserName);
-
             if (userASP == null)
-
             {
-
                 return false;
-
             }
-
-
 
             userASP.UserName = newUserName;
             userASP.Email = newUserName;
             var response = userManager.Update(userASP);
             return response.Succeeded;
-
         }
-
-
 
         public static void CheckRole(string roleName)
         {
             var roleManager = new RoleManager<IdentityRole>(new RoleStore<IdentityRole>(userContext));
 
-
             // Check to see if Role Exists, if not create it
-
             if (!roleManager.RoleExists(roleName))
-
             {
-
                 roleManager.Create(new IdentityRole(roleName));
-
             }
-
         }
-
-
 
         public static void CheckSuperUser()
         {
@@ -74,15 +57,12 @@
             var email = WebConfigurationManager.AppSettings["AdminUser"];
             var password = WebConfigurationManager.AppSettings["AdminPassWord"];
             var userASP = userManager.FindByName(email);
-
             if (userASP == null)
             {
                 CreateUserASP(email, "Admin", password);
                 return;
             }
-
         }
-
 
         public static void CreateUserASP(string email, string roleName)
         {
@@ -99,108 +79,55 @@
                 userManager.Create(userASP, email);
             }
 
-
-
             userManager.AddToRole(userASP.Id, roleName);
-
         }
-
-
 
         public static void CreateUserASP(string email, string roleName, string password)
-
         {
-
             var userManager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(userContext));
-
-
 
             var userASP = new ApplicationUser
-
             {
-
                 Email = email,
-
                 UserName = email,
-
             };
 
-
-
             var result = userManager.Create(userASP, password);
-
             if (result.Succeeded)
-
             {
-
                 userManager.AddToRole(userASP.Id, roleName);
-
             }
-
         }
-
-
 
         public static async Task PasswordRecovery(string email)
-
         {
-
             var userManager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(userContext));
-
             var userASP = userManager.FindByEmail(email);
-
             if (userASP == null)
-
             {
-
                 return;
-
             }
-
-
 
             var random = new Random();
-
             var newPassword = string.Format("{0}", random.Next(100000, 999999));
-
             var response = await userManager.AddPasswordAsync(userASP.Id, newPassword);
-
             if (response.Succeeded)
-
             {
-
                 var subject = "Lands App - Recuperación de contraseña";
-
                 var body = string.Format(@"
-
                     <h1>Lands App - Recuperación de contraseña</h1>
-
                     <p>Su nueva contraseña es: <strong>{0}</strong></p>
-
                     <p>Por favor no olvide cambiarla por una de fácil recordación",
-
                     newPassword);
 
-
-
                 await MailHelper.SendMail(email, subject, body);
-
             }
-
         }
-
-
 
         public void Dispose()
-
         {
-
             userContext.Dispose();
-
             db.Dispose();
-
         }
-
     }
-
 }

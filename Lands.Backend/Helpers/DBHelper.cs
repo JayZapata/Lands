@@ -1,5 +1,4 @@
-﻿
-namespace Lands.Backend.Helpers
+﻿namespace Lands.Backend.Helpers
 {
     using System;
     using System.Threading.Tasks;
@@ -23,37 +22,20 @@ namespace Lands.Backend.Helpers
                     ex.InnerException.InnerException.Message.Contains("_Index"))
                 {
                     response.Message = "There is a record with the same value";
-
                 }
-
                 else if (ex.InnerException != null &&
-
                     ex.InnerException.InnerException != null &&
-
                     ex.InnerException.InnerException.Message.Contains("REFERENCE"))
-
                 {
-
                     response.Message = "The record can't be delete because it has related records";
-
                 }
-
                 else
-
                 {
-
                     response.Message = ex.Message;
-
                 }
-
-
 
                 return response;
-
             }
-
         }
-
     }
-
 }

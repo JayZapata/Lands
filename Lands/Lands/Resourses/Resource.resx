@@ -129,4 +129,7 @@
   <data name="Error" xml:space="preserve">
     <value>Error</value>
   </data>
+  <data name="Rememberme" xml:space="preserve">
+    <value>Rememberme on this divice</value>
+  </data>
 </root>

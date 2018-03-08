@@ -9,7 +9,7 @@
         {
             string path = string.Empty;
             string pic = string.Empty;
-            
+
             if (file != null)
             {
                 pic = Path.GetFileName(file.FileName);
@@ -30,18 +30,10 @@
             }
             catch
             {
-
                 return false;
-
             }
 
-
-
             return true;
-
         }
-
     }
-
 }
-

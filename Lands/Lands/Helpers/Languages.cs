@@ -37,10 +37,10 @@ namespace Lands.Helpers
             get { return Resource.EmailPlaceHolder; }
         }
 
-     /*   public static string Rememberme
+        public static string Rememberme
         {
             get { return Resource.Rememberme; }
-        }*/
+        }
     }
 
 }

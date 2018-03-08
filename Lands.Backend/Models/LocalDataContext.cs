@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-
-namespace Lands.Backend.Models
+﻿namespace Lands.Backend.Models
 {
     using Domain;
 
@@ -11,5 +6,4 @@ namespace Lands.Backend.Models
     {
         public System.Data.Entity.DbSet<Lands.Domain.User> Users { get; set; }
     }
-
 }

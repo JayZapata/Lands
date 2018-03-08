@@ -3,22 +3,29 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-
-
 namespace Lands
 {
     using Views;
     using Xamarin.Forms;
 
-    #region Constructors
+    
     public partial class App : Application
 	{
-		public App ()
+        #region Properties
+        public static NavigationPage Navigator
+        {
+            get;
+            internal set;
+        }
+        #endregion
+
+        #region Constructors
+        public App ()
 		{
 			InitializeComponent();
-            
 
-			this.MainPage = new NavigationPage (new LoginPage());
+            this.MainPage = new MasterPage();
+            //this.MainPage = new NavigationPage (new LoginPage());
 		}
         #endregion
 

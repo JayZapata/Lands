@@ -1,15 +1,16 @@
 ﻿namespace Lands.Backend.Controllers
 {
-    using System.Data.Entity;
-    using System.Threading.Tasks;
-    using System.Net;    
-    using System.Web.Mvc;
     using Backend.Models;
     using Domain;
+    using System.Data.Entity;
+    using System.Net;
+    using System.Threading.Tasks;
+    using System.Web.Mvc;
+    using Helpers;
 
     [Authorize(Roles = "Admin")]
     public class UsersController : Controller
-    {        
+    {
         private LocalDataContext db = new LocalDataContext();
 
         // GET: Users
@@ -40,20 +41,33 @@
         }
 
         // POST: Users/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create([Bind(Include = "UserId,FirstName,LastName,Email,Telephone,ImagePath")] User user)
+        public async Task<ActionResult> Create(UserView view)
         {
             if (ModelState.IsValid)
             {
+                var user = this.ToUser(view);
                 db.Users.Add(user);
                 await db.SaveChangesAsync();
+                UsersHelper.CreateUserASP(view.Email, "User", view.Password); 
                 return RedirectToAction("Index");
             }
 
-            return View(user);
+            return View(view);
+        }
+
+        private User ToUser(UserView view)
+        {
+            return new User
+            {
+                Email = view.Email,
+                FirstName = view.FirstName,
+                ImagePath = view.ImagePath,
+                LastName = view.LastName,
+                Telephone = view.Telephone,
+                UserId = view.UserId,
+            };
         }
 
         // GET: Users/Edit/5

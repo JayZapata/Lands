@@ -121,12 +121,15 @@
     <value>Aceitar</value>
   </data>
   <data name="EmailPlaceHolder" xml:space="preserve">
-    <value>voce</value>
+    <value>Digite seu e-mail....</value>
   </data>
   <data name="EmailValidation" xml:space="preserve">
     <value>Você deve inserir um email</value>
   </data>
   <data name="Error" xml:space="preserve">
     <value>Error</value>
+  </data>
+  <data name="Rememberme" xml:space="preserve">
+    <value>Lembre-se de mim neste dispositivo</value>
   </data>
 </root>

@@ -7,7 +7,8 @@ namespace Lands
 {
     using Views;
     using Xamarin.Forms;
-
+    using ViewModels;
+    using Helpers;
     
     public partial class App : Application
 	{
@@ -24,9 +25,19 @@ namespace Lands
 		{
 			InitializeComponent();
 
-            //this.MainPage = new MasterPage();
-            this.MainPage = new NavigationPage (new LoginPage());
-		}
+            if (string.IsNullOrEmpty(Settings.Token))
+            {
+                this.MainPage = new NavigationPage(new LoginPage());
+            }
+            else
+            {
+                var mainViewModel = MainViewModel.GetInstance();
+                mainViewModel.Token = Settings.Token;
+                mainViewModel.TokenType = Settings.TokenType;
+                mainViewModel.Lands = new LandsViewModel();                
+                Application.Current.MainPage = new MasterPage();
+            }            
+        }
         #endregion
 
         #region Metods

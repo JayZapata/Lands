@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace Lands.Domain
 {
+    using Newtonsoft.Json;
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
 
@@ -37,6 +38,11 @@ namespace Lands.Domain
 
         [Display(Name = "Image")]
         public string ImagePath { get; set; }
+
+        public int UserTypeId { get; set; }
+
+        [JsonIgnore]
+        public virtual UserType UserType { get; set; }
 
         [Display(Name = "Image")]
         public string ImageFullPath

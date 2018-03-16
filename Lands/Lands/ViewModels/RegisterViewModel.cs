@@ -7,8 +7,8 @@
     using Plugin.Media.Abstractions;
     using Services;
     using Xamarin.Forms;
-    //using Domain;    
-    
+    using Domain;
+        
     public class RegisterViewModel : BaseViewModel
     {
         #region Services
@@ -133,7 +133,7 @@
             {
                 await Application.Current.MainPage.DisplayAlert(
                     "Error",
-                    "Ingrese Email correctamente",
+                    "Ingrese Email Correctamente",
                     "Accept");
                 return;
             }
@@ -160,7 +160,7 @@
             {
                 await Application.Current.MainPage.DisplayAlert(
                     "Error",
-                    "Ingrese Contraseña Correcta2",
+                    "El Password debe tener minimo 6 caracteres",
                     "Accept");
                 return;
             }
@@ -169,7 +169,7 @@
             {
                 await Application.Current.MainPage.DisplayAlert(
                     "Error",
-                    "Ok Confirmacion",
+                    "Ok Confirmacion De Password",
                     "Accept");
                 return;
             }
@@ -178,7 +178,7 @@
             {
                 await Application.Current.MainPage.DisplayAlert(
                     "Error",
-                    "Ok Confirmacion2",
+                    "No Coinciden Contraseñas",
                     "Accept");
                 return;
             }
@@ -193,7 +193,7 @@
                 this.IsEnabled = true;
                 await Application.Current.MainPage.DisplayAlert(
                     Languages.Error,
-                    checkConnetion.Message,
+                    "Revisa tu conexion a internet",
                     Languages.Accept);
                 return;
             }
@@ -204,34 +204,34 @@
                 imageArray = FilesHelper.ReadFully(this.file.GetStream());
             }
 
-            //var user = new User
-            //{
-            //    Email = this.Email,
-            //    FirstName = this.FirstName,
-            //    LastName = this.LastName,
-            //    Telephone = this.Telephone,
-            //    ImageArray = imageArray,
-            //    UserTypeId = 1,
-            //    Password = this.Password,
-            //};
+            var user = new User
+            {
+                Email = this.Email,
+                FirstName = this.FirstName,
+                LastName = this.LastName,
+                Telephone = this.Telephone,
+                ImageArray = imageArray,
+                UserTypeId = 1,
+                Password = this.Password,
+            };
 
-            //var apiSecurity = Application.Current.Resources["APISecurity"].ToString();
-            //var response = await this.apiService.Post(
-            //    apiSecurity,
-            //    "/api",
-            //    "/Users",
-            //    user);
+            var apiSecurity = Application.Current.Resources["APISecurity"].ToString();
+            var response = await this.apiService.Post(
+                apiSecurity,
+                "/api",
+                "/Users",
+                user);
 
-            //if (!response.IsSuccess)
-            //{
-            //    this.IsRunning = false;
-            //    this.IsEnabled = true;
-            //    await Application.Current.MainPage.DisplayAlert(
-            //        Languages.Error,
-            //        response.Message,
-            //        Languages.Accept);
-            //    return;
-            //}
+            if (!response.IsSuccess)
+            {
+                this.IsRunning = false;
+                this.IsEnabled = true;
+                await Application.Current.MainPage.DisplayAlert(
+                    "Error",
+                    "No se pudo guardar, hubo un error",
+                    "Accept");
+                return;
+            }
 
             this.IsRunning = false;
             this.IsEnabled = true;

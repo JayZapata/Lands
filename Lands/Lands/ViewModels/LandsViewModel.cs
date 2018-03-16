@@ -13,7 +13,7 @@
     public class LandsViewModel:BaseViewModel
     {
         #region Services
-        private ApiService apiServices;
+        private ApiService apiService;
         #endregion
 
         #region Attributes
@@ -52,7 +52,7 @@
 
         public LandsViewModel()
         {
-            this.apiServices = new ApiService();
+            this.apiService = new ApiService();
             this.LoadLands();
         }
 
@@ -63,7 +63,7 @@
         private async void LoadLands()
         {
             this.IsRefreshing = true;
-            var connection = await this.apiServices.CheckConnection();
+            var connection = await this.apiService.CheckConnection();
 
             if (!connection.IsSuccess)
 
@@ -83,8 +83,9 @@
 
             }
 
-            var response=await this.apiServices.GetList<Land>(
-                "http://restcountries.eu/rest/v2/all",
+            var apiLands = Application.Current.Resources["APILands"].ToString();
+            var response = await this.apiService.GetList<Land>(
+                apiLands,
                 "/rest",
                 "/v2/all");
 

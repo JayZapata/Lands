@@ -125,12 +125,13 @@ namespace Lands.ViewModels
                 return;
             }
 
-            var token = await this.apiService.GetToken(
-                "http://landsapi4.azurewebsites.net", 
-                this.Email, 
-                this.Password);
-            
-            if(token==null)
+             var apiSecurity = Application.Current.Resources["APISecurity"].ToString();
+             var token = await this.apiService.GetToken(
+                  apiSecurity,
+                  this.Email,
+                  this.Password);
+
+            if (token==null)
             {
                 this.IsRunning = false;
                 this.IsEnabled = true;
